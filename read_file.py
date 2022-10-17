@@ -53,6 +53,7 @@ def load_people_list():
     people_info = read_xlsx(people_file)
     people_list = []
     for i in range(len(people_info)):
-        peo = people(i, people_info[i][1], people_info[i][2], people_info[i][3])
+        leave_date = people_info[i][3].split(',')
+        peo = people(i, people_info[i][1], people_info[i][2], leave_date)
         people_list.append(peo)
     return people_list
