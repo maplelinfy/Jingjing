@@ -1,5 +1,5 @@
 
-### 问题描述：
+### 问题描述
 
 ![问题描述](https://github.com/maplelinfy/Jingjing/blob/master/%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0.jpg)
 
