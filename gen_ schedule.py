@@ -10,8 +10,8 @@ class people(object):
         self.jd = join_date #入职日期
         self.ld = leave_date #请假日期
         self.sch = [] #日程表
-        self.pro = ''
-        self.pro_bd = ''
+        self.pro = '' #当前所在项目
+        self.pro_bd = '' #进入当前项目的日期
         self.status = 0 #状态：0表示空闲，1表示项目中
 
 class project(object):
@@ -47,6 +47,9 @@ def if_workday(y, m, d):
         return 0
 
 def cal_begin_date(people_list):
+    '''
+    根据所有人的最早入职时间确定开始日期
+    '''
     begin_date = '9999-99-99'
     for peo in people_list:
         if peo.jd < begin_date:
@@ -54,6 +57,9 @@ def cal_begin_date(people_list):
     return begin_date
 
 def assign_project(people_list, project_list, date):
+    '''
+    每天开始前，遍历所有员工，如果该员工当前闲置并且已经入职，则循环所有项目，并计算该员工加入后“项目剩余预算%单日总支出”，将该员工放入该值最小的项目中
+    '''
     for peo in people_list:
         if peo.status == 0 and peo.jd <= date:
             min_remainder = 1e10
@@ -75,6 +81,9 @@ def assign_project(people_list, project_list, date):
                     pj.bd = date
 
 def daily_update(people_list, project_list, date):
+    '''
+    每天结束后，遍历所有项目，首先计算该项目的剩余预算，并且根据剩余预算预估今日是否为项目最后一天。
+    '''
     for pj in project_list:
         if pj.status == 1: continue
         pj_peo = pj.peo
@@ -93,6 +102,9 @@ def daily_update(people_list, project_list, date):
                 peo.sch.append([pj.name, peo.pro_bd, date])
 
 def find_next_workday(date):
+    """
+    计算下一个工作日
+    """
     while(1):
         today = datetime.datetime.strptime(date, '%Y-%m-%d')
         tomorrow = today + datetime.timedelta(days=1)
@@ -104,6 +116,9 @@ def find_next_workday(date):
             date = tomorrow
 
 def project_status_analysis(pj, people_list, date):
+    '''
+    判断今天是否为项目最后一天，1表示是，0表示否
+    '''
     next_date = find_next_workday(date)
     pj_peo = pj.peo
     de = pj.de
@@ -117,17 +132,26 @@ def project_status_analysis(pj, people_list, date):
         return 0
 
 def if_close(project_list):
+    '''
+    每天结束后检查所有项目是否均已结束，1表示均已结束，0表示还没都结束
+    '''
     for pro in project_list:
         if pro.status == 0:
             return 0
     return 1
 
 def workflow(people_list, project_list, date):
+    """
+    每日工作流，分为每天开始前assign_project以及每天结束后daily_update
+    """
     assign_project(people_list, project_list, date)
     daily_update(people_list, project_list, date)
     return if_close(project_list)
 
 def date_int2str(y, m, d):
+    '''
+    将int类日期转换为str型，例如date_int2str(2022, 1, 2)返回为'2022-01-02'
+    '''
     sy = str(y)
     sm = str(m)
     if m < 10:
@@ -138,10 +162,19 @@ def date_int2str(y, m, d):
     return '-'.join([sy, sm, sd])
 
 def date_str2int(date):
+    '''
+    将str类日期转换为int，例如date_str2int('2022-01-02')返回为2022, 1, 2
+    '''
     y, m, d = date.split('-')
     return int(y), int(m), int(d)
 
 def work(people_list, project_list):
+    '''
+    根据计算的开始日期，循环遍历所有日期来执行工作流
+    :param people_list: 员工列表，元素为people实例
+    :param project_list: 项目列表，元素为project实例
+    :return:
+    '''
     begin_date = cal_begin_date(people_list)
     by, bm, bd = date_str2int(begin_date)
     for d in range(bd, month_day[bm - 1] + 1):  # 本年度本月剩余日的
