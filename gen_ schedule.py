@@ -5,7 +5,7 @@
 
 from tools import if_workday, find_next_workday, date_int2str, date_str2int
 from tools import month_day
-from read_file import load_project_list, load_people_list
+from read_file import load_project_list, load_people_list, save_project_result, save_people_result
 
 
 def cal_begin_date(people_list):
@@ -131,3 +131,8 @@ def begin():
     people_list = load_people_list()
     project_list = load_project_list()
     work(people_list, project_list)
+    save_people_result(people_list)
+    save_project_result(project_list)
+
+if __name__ == '__main__':
+    begin()
