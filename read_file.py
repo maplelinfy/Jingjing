@@ -22,7 +22,7 @@ import xlrd
 import xlwt
 import os
 
-from tools import people, project
+from common import people, project
 
 input_folder = './inputFiles'
 black_list_file = os.path.join(input_folder, 'blackList.txt')
