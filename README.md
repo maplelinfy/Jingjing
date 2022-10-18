@@ -43,7 +43,13 @@ _project.xlsx_ : 项目列表，分为2列：项目名称,项目总预算
 
 _people.xlsx_ : 员工列表，分为4列：姓名,日薪,入职日期,休假日期(用英文逗号做分割，例如2022-01-03,2022-03-04)
 
-所有文件统一放入文件夹 _inputFiles_ ，_project.xlsx_ 和 _people.xlsx_ 信息请放在Sheet1页
+注意：
+
+1、所有文件均无表头！！！第一行即为真实数据
+
+2、所有文件统一放入文件夹 _inputFiles_
+
+3、_project.xlsx_ 和 _people.xlsx_ 信息请放在Sheet1页！！！
 
 #### 运行步骤：
 
