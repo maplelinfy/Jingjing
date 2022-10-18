@@ -29,7 +29,7 @@ _inputFiles_ ：输入文件放置文件夹，需按指定格式自行配置
 
 _outputFiles_ ：输出文件文件夹，存放所有输出文件
 
--requirements.txt_ ：所需python包
+_requirements.txt_ ：所需python包
 
 ### 操作流程
 
