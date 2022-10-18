@@ -81,6 +81,7 @@ def load_project_list():
         pro = project(i, float(project_info[i][1]))
         project_list.append(pro)
         project_name.append(project_info[i][0])
+    print('读入项目' + str(len(project_list)) + '个')
     return project_list
 
 def load_people_list():
@@ -94,6 +95,7 @@ def load_people_list():
         peo = people(i, float(people_info[i][1]), people_info[i][2], leave_date)
         people_list.append(peo)
         people_name.append(people_info[i][0])
+    print('读入员工' + str(len(people_list)) + '个')
     return people_list
 
 def save_project_result(project_list):
