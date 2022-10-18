@@ -35,21 +35,25 @@ _requirements.txt_ ：所需python包
 
 #### 输入文件说明：
 
-blackList.txt: 周一到周五但是是休息日的日期列表
+_blackList.txt_ : 周一到周五但是是休息日的日期列表
 
-whiteList.txt: 周六日但是是工作日的日期列表
+_whiteList.txt_ : 周六日但是是工作日的日期列表
 
-project.xlsx: 项目列表，分为2列：项目名称,项目总预算
+_project.xlsx_ : 项目列表，分为2列：项目名称,项目总预算
 
-people.xlsx: 员工列表，分为4列：姓名,日薪,入职日期,休假日期(用英文逗号做分割，例如2022-01-03,2022-03-04)
+_people.xlsx_ : 员工列表，分为4列：姓名,日薪,入职日期,休假日期(用英文逗号做分割，例如2022-01-03,2022-03-04)
 
-所有文件统一放入文件夹inputFiles，project.xlsx和people.xlsx信息请放在Sheet1页
+所有文件统一放入文件夹 _inputFiles_ ，_project.xlsx_ 和 _people.xlsx_ 信息请放在Sheet1页
 
 #### 运行步骤：
 
 以下两种方式任选其一即可
 
 1、python
+
+安装python和git
+
+        win+R输入cmd，弹出的命令行窗口        
 
         git clone https://github.com/maplelinfy/Jingjing.git
 
@@ -61,4 +65,16 @@ people.xlsx: 员工列表，分为4列：姓名,日薪,入职日期,休假日期
 
 2、jupyter notebook
 
-待测试完成后补充
+安装anaconda和git
+
+        win+R输入cmd，弹出的命令行窗口
+
+        git clone https://github.com/maplelinfy/Jingjing.git
+
+        下载完成后，输入 jupyter notebook，回车
+
+        点击进入到刚才下载下来的Jingjing文件夹
+
+        点击进入 gen_schedule.ipynb（gen_schedule.ipynb待测试完成后补充）
+
+        点击代码块至可编辑状态，ctrl+enter执行代码
