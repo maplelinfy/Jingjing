@@ -63,7 +63,7 @@ _people.xlsx_ : 员工列表，分为4列：姓名,日薪,入职日期,休假日
 
 安装python和git
 
-        win+R输入cmd，弹出的命令行窗口        
+        win+R输入cmd，弹出命令行窗口        
 
         git clone https://github.com/maplelinfy/Jingjing.git
 
@@ -77,7 +77,7 @@ _people.xlsx_ : 员工列表，分为4列：姓名,日薪,入职日期,休假日
 
 安装anaconda和git
 
-        win+R输入cmd，弹出的命令行窗口
+        win+R输入cmd，弹出命令行窗口
 
         git clone https://github.com/maplelinfy/Jingjing.git
 
