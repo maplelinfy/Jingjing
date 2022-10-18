@@ -25,7 +25,7 @@ _tools.py_ ：工具类
 
 _read_file.py_ ：读写文件函数，可修改文件名称
 
--common.py_ ：类定义
+_common.py_ ：类定义
 
 _inputFiles_ ：输入文件放置文件夹，需按指定格式自行配置
 
