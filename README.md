@@ -1,4 +1,6 @@
 
+### 状态：初步开发完成，测试中
+
 ### 问题描述
 
 ![问题描述](https://github.com/maplelinfy/Jingjing/blob/master/%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0.jpg)
@@ -58,3 +60,5 @@ people.xlsx: 员工列表，分为4列：姓名,日薪,入职日期,休假日期
         python gen_schedule.py
 
 2、jupyter notebook
+
+待测试完成后补充
