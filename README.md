@@ -117,4 +117,6 @@ _people_out.xlsx_ ：员工排期输出：分为4列：姓名，所在项目，�
 
 #### 离线版如何使用：
 
-待更新
+详见离线操作手册（还未更新完成）
+
+![离线操作手册](https://github.com/maplelinfy/Jingjing/blob/master/%E7%A6%BB%E7%BA%BF%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx)
