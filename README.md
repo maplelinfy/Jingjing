@@ -21,11 +21,13 @@
 
 _gen_schedule.py_ ：主流程
 
-_tools.py_ ：工具类
+_tools.py_ ：工具函数
 
-_read_file.py_ ：读写文件函数，可修改文件名称
+_read_file.py_ ：读写文件函数
 
 _common.py_ ：类定义
+
+_constant.py_ ：参数，可修改文件名称
 
 _inputFiles_ ：输入文件放置文件夹，需按指定格式自行配置
 
@@ -37,23 +39,27 @@ _requirements.txt_ ：所需python包
 
 #### 输入文件说明：
 
-_blackList.txt_ : 周一到周五但是是休息日的日期列表
+_blackList.txt_ : 周一到周五但是是休息日的日期列表，需根据国家法定节假日定期更新
 
-_whiteList.txt_ : 周六日但是是工作日的日期列表
+_whiteList.txt_ : 周六日但是是工作日的日期列表，需根据国家法定节假日定期更新
 
 _project.xlsx_ : 项目列表，分为2列：项目名称,项目总预算
 
-_people.xlsx_ : 员工列表，分为4列：姓名,日薪,入职日期,休假日期(用英文逗号做分割，例如2022-01-03,2022-03-04)
+_people.xlsx_ : 员工列表，分为4列：姓名,日薪,入职日期,休假日期(用英文逗号做分割，例如2022-01-03,2022-03-04，没有可置空)
 
-（可参考实例文件 _project_eg.xlsx_ 和 _people_eg.xlsx_）
+（可参考示例文件 _project_eg.xlsx_ 和 _people_eg.xlsx_ ，请严格按照示例文件格式添加数据）
 
 注意：
 
-1、所有文件均无表头！！！第一行即为真实数据
+1、所有文件均无表头，第一行即为真实数据！！！
 
-2、所有文件统一放入文件夹 _inputFiles_
+2、_project.xlsx_ 和 _people.xlsx_ 信息请放在Sheet1页！！！
 
-3、_project.xlsx_ 和 _people.xlsx_ 信息请放在Sheet1页！！！
+3、_project_.xlsx_ 和 _people_.xlsx_ 两个文件中，除休假日期，其余均不可为空，金额类请保证是数值型取值！！！
+
+4、所有文件统一放入文件夹 _inputFiles_
+
+5、如需修改文件名，可在 _constant.py_ 中进行修改
 
 #### 运行步骤：
 

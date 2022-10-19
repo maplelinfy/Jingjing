@@ -3,9 +3,9 @@
 注：字符串日期格式统一为'YYYY-MM-DD'
 '''
 
-from tools import if_workday, find_next_workday, date_int2str, date_str2int
-from tools import month_day
 from read_file import load_project_list, load_people_list, save_project_result, save_people_result
+from tools import find_next_workday
+from constant import MAX_DAYS
 
 
 def cal_begin_date(people_list):
@@ -104,28 +104,13 @@ def work(people_list, project_list):
     :return:
     '''
     begin_date = cal_begin_date(people_list)
-    by, bm, bd = date_str2int(begin_date)
-    for d in range(bd, month_day[bm - 1] + 1):  # 本年度本月剩余日的
-        if if_workday(by, bm, d):
-            date = date_int2str(by, bm, d)
-            label = workflow(people_list, project_list, date)
-            if label:
-                return
-    for m in range(bm + 1, 13):  # 本年度下个月以后的
-        for d in range(1, month_day[m - 1] + 1):
-            if if_workday(by, m, d):
-                date = date_int2str(by, m, d)
-                label = workflow(people_list, project_list, date)
-                if label:
-                    return
-    for y in range(by + 1, 2024):  # 下一年以后的
-        for m in range(1, 13):
-            for d in range(1, month_day[m - 1] + 1):
-                if if_workday(y, m, d):
-                    date = date_int2str(y, m, d)
-                    label = workflow(people_list, project_list, date)
-                    if label:
-                        return
+    date = begin_date
+    for _ in range(MAX_DAYS):
+        label = workflow(people_list, project_list, date)
+        if label:
+            return
+        else:
+            date = find_next_workday(date)
 
 def begin():
     people_list = load_people_list()

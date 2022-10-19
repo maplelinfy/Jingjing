@@ -1,20 +1,17 @@
 
 import datetime
-from read_file import load_black_list, load_white_list
 
-month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] #每个月有多少天，如遇闰年，2月需单独考虑
+from read_file import load_black_list, load_white_list
 
 
 def if_workday(y, m, d):
     """
-    根据日期判断是否为工作日（暂时仅适用于中国大陆2022年，如需之前年份或次年后年份，需更新black_list和white_list）
+    根据日期判断是否为工作日（需定期根据法定节假日更新black_list和white_list文件）
     :param y: 年
     :param m: 月
     :param d: 日
     :return: 1：工作日；0：休息日
     """
-    # black_list = ['2022-9-12', '2022-10-3', '2022-10-4', '2022-10-5', '2022-10-6', '2022-10-7'] #周一到周五但是是休息日
-    # white_list = ['2022-10-8', '2022-10-9'] #周六日但是是工作日
     black_list = load_black_list()
     white_list = load_white_list()
     today = '-'.join([str(y), str(m), str(d)])
