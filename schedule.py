@@ -114,7 +114,3 @@ def begin():
     work(people_list, project_list)
     save_people_result(people_list)
     save_project_result(project_list)
-
-if __name__ == '__main__':
-    begin()
-    print('已完成，请在输出文件夹查看结果文件。')

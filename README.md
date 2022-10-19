@@ -19,7 +19,9 @@
 
 ### 文件说明
 
-_gen_schedule.py_ ：主流程
+_run.py_ ：执行函数
+
+_schedule.py_ ：排期算法
 
 _tools.py_ ：工具函数
 
@@ -95,7 +97,7 @@ _people_out.xlsx_ ：员工排期输出：分为4列：姓名，所在项目，�
 
         pip install -r requirements.txt
 
-        python gen_schedule.py
+        python run.py
 
 2、jupyter notebook
 
@@ -111,12 +113,12 @@ _people_out.xlsx_ ：员工排期输出：分为4列：姓名，所在项目，�
 
         点击进入到刚才下载下来的Jingjing文件夹
 
-        点击进入 gen_schedule.ipynb（gen_schedule.ipynb待测试完成后补充）
+        点击进入 run.ipynb
 
         点击代码块至可编辑状态，ctrl+enter执行代码
 
 #### 离线版如何使用：
 
-详见离线操作手册（还未更新完成）
+详见离线操作手册
 
 ![离线操作手册](https://github.com/maplelinfy/Jingjing/blob/master/%E7%A6%BB%E7%BA%BF%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx)
