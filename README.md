@@ -19,7 +19,7 @@
 
 ### 文件说明
 
-_run.py_ ：执行函数
+_run.py_ ：执行文件
 
 _schedule.py_ ：排期算法
 
@@ -31,11 +31,15 @@ _common.py_ ：类定义
 
 _constant.py_ ：参数，可自行配置文件输入输出名
 
+_run.ipynb_ ：juypter执行文件
+
 _requirements.txt_ ：所需python包
 
 _inputFiles_ ：输入文件放置文件夹，需按指定格式自行配置
 
 _outputFiles_ ：输出文件文件夹，存放所有输出文件
+
+_doc_ ：文档目录，包括问题描述、离线操作手册
 
 ### 操作流程
 
