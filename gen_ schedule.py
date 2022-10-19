@@ -1,8 +1,4 @@
 
-'''
-注：字符串日期格式统一为'YYYY-MM-DD'
-'''
-
 from read_file import load_project_list, load_people_list, save_project_result, save_people_result
 from tools import find_next_workday
 from constant import MAX_DAYS
