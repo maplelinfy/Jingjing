@@ -27,13 +27,13 @@ _read_file.py_ ：读写文件函数
 
 _common.py_ ：类定义
 
-_constant.py_ ：参数，可修改文件名称
+_constant.py_ ：参数，可自行配置文件输入输出名
+
+_requirements.txt_ ：所需python包
 
 _inputFiles_ ：输入文件放置文件夹，需按指定格式自行配置
 
 _outputFiles_ ：输出文件文件夹，存放所有输出文件
-
-_requirements.txt_ ：所需python包
 
 ### 操作流程
 
@@ -69,7 +69,7 @@ _project_out.xlsx_ ：项目信息输出，分为4列：项目名称，项目开
 
 _people_out.xlsx_ ：员工排期输出：分为4列：姓名，所在项目，进入时间，退出时间
 
-（可参考实例文件 _project_out_eg.xlsx_ 和 _people_out_eg.xlsx_）
+（可参考示例文件 _project_out_eg.xlsx_ 和 _people_out_eg.xlsx_）
 
 注意：
 
@@ -85,7 +85,9 @@ _people_out.xlsx_ ：员工排期输出：分为4列：姓名，所在项目，�
 
 安装python和git
 
-        win+R输入cmd，弹出命令行窗口        
+        win+R输入cmd，弹出命令行窗口（mac打开“终端”即可）
+
+        进入到一个保存代码的目录
 
         git clone https://github.com/maplelinfy/Jingjing.git
 
@@ -99,14 +101,20 @@ _people_out.xlsx_ ：员工排期输出：分为4列：姓名，所在项目，�
 
 安装anaconda和git
 
-        win+R输入cmd，弹出命令行窗口
+        win+R输入cmd，弹出命令行窗口（mac打开“终端”即可）
+
+        进入到一个保存代码的目录
 
         git clone https://github.com/maplelinfy/Jingjing.git
 
-        下载完成后，输入 jupyter notebook，回车
+        下载完成后，输入 jupyter notebook，回车，会自动弹出网页窗口显示目录
 
         点击进入到刚才下载下来的Jingjing文件夹
 
         点击进入 gen_schedule.ipynb（gen_schedule.ipynb待测试完成后补充）
 
         点击代码块至可编辑状态，ctrl+enter执行代码
+
+#### 离线版如何使用：
+
+待更新
