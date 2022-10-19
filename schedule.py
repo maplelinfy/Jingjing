@@ -1,5 +1,5 @@
 
-from read_file import load_project_list, load_people_list, save_project_result, save_people_result
+from read_file import load_data, save_results
 from tools import find_next_workday
 from constant import MAX_DAYS
 
@@ -109,8 +109,6 @@ def work(people_list, project_list):
             date = find_next_workday(date)
 
 def begin():
-    people_list = load_people_list()
-    project_list = load_project_list()
+    people_list, project_list = load_data()
     work(people_list, project_list)
-    save_people_result(people_list)
-    save_project_result(project_list)
+    save_results(people_list, project_list)
