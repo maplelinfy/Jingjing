@@ -3,7 +3,7 @@
 
 ### 问题描述
 
-![问题描述](https://github.com/maplelinfy/Jingjing/blob/master/%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0.jpg)
+![问题描述](https://github.com/maplelinfy/Jingjing/blob/master/doc/%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0.jpg)
 
 ### 解决步骤
 
@@ -121,4 +121,4 @@ _people_out.xlsx_ ：员工排期输出：分为4列：姓名，所在项目，�
 
 详见离线操作手册
 
-![离线操作手册](https://github.com/maplelinfy/Jingjing/blob/master/%E7%A6%BB%E7%BA%BF%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx)
+![离线操作手册](https://github.com/maplelinfy/Jingjing/blob/master/doc/%E7%A6%BB%E7%BA%BF%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx)
