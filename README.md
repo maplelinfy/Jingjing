@@ -59,7 +59,7 @@ _project.xlsx_ : 项目列表，分为2列：项目名称,项目总预算
 
 2、_people.xlsx_ 和 _project.xlsx_ 信息请放在Sheet1页！！！
 
-3、_people_.xlsx_ 和 _project_.xlsx_ 两个文件中，除休假日期，其余均不可为空
+3、_people.xlsx_ 和 _project.xlsx_ 两个文件中，除休假日期，其余均不可为空
 
 4、字符串日期格式统一为 _YYYY-MM-DD_，例如 _2022-10-08_
 
