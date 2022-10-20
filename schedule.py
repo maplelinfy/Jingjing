@@ -24,7 +24,7 @@ def assign_project(people_list, project_list, date):
             min_pj = -1
             for pj in project_list:
                 if pj.status == 0 and pj.lebgt >= pj.de + peo.dw:
-                    rd = pj.lebgt / (pj.de + peo.dw)
+                    rd = pj.lebgt % (pj.de + peo.dw)
                     if rd < min_remainder:
                         min_pj = pj.name
                         min_remainder = rd
