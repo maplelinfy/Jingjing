@@ -4,21 +4,19 @@ import datetime
 from read_file import load_black_list, load_white_list
 
 
-def if_workday(y, m, d):
+def if_workday(date):
     """
     根据日期判断是否为工作日（需定期根据法定节假日更新black_list和white_list文件）
-    :param y: 年
-    :param m: 月
-    :param d: 日
+    :param date: 日期
     :return: 1：工作日；0：休息日
     """
     black_list = load_black_list()
     white_list = load_white_list()
-    today = '-'.join([str(y), str(m), str(d)])
-    if today in black_list:
+    if date in black_list:
         return 0
-    if today in white_list:
+    if date in white_list:
         return 1
+    y, m, d = date_str2int(date)
     wk = datetime.date(y, m, d).weekday() #计算星期几，0-4表示工作日，5和6表示周六日
     if wk < 5:
         return 1
@@ -33,8 +31,8 @@ def find_next_workday(date):
         today = datetime.datetime.strptime(date, '%Y-%m-%d')
         tomorrow = today + datetime.timedelta(days=1)
         tomorrow = tomorrow.strftime('%Y-%m-%d')
-        y, m, d = date_str2int(tomorrow)
-        if if_workday(y, m, d):
+        # y, m, d = date_str2int(tomorrow)
+        if if_workday(tomorrow):
             return tomorrow
         else:
             date = tomorrow
