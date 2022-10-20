@@ -23,7 +23,7 @@ _run.ipynb_ ：juypter执行文件
 
 _run.py_ ：执行文件
 
-_schedule.py_ ：排期算法
+_schedule.py_ ：工作流函数
 
 _tools.py_ ：时间工具函数
 
