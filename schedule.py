@@ -16,7 +16,7 @@ def cal_begin_date(people_list):
 
 def assign_project(people_list, project_list, date):
     '''
-    每天开始前，遍历所有员工，如果该员工当前闲置并且已经入职，则循环所有项目，并计算该员工加入后“项目剩余预算%单日总支出”，将该员工放入该值最小的项目中
+    每天开始前，遍历所有员工，如果该员工当前已经入职并且闲置，则循环所有未完成的项目，并计算该员工加入后“项目剩余预算%单日总支出”，将该员工放入到该值最小的项目中
     '''
     for peo in people_list:
         if peo.status == 0 and peo.jd <= date:
@@ -28,7 +28,7 @@ def assign_project(people_list, project_list, date):
                     if rd < min_remainder:
                         min_pj = pj.name
                         min_remainder = rd
-            if min_pj != -1:
+            if min_pj != -1: #等于-1表示所有项目均不需要新人
                 peo.pro = min_pj
                 peo.pro_bd = date
                 peo.status = 1
@@ -40,18 +40,18 @@ def assign_project(people_list, project_list, date):
 
 def daily_update(people_list, project_list, date):
     '''
-    每天结束后，遍历所有项目，首先计算该项目的剩余预算，并且根据剩余预算预估今日是否为项目最后一天。
+    每天结束后，遍历所有项目，首先计算该项目的剩余预算，并且根据剩余预算预估今日是否为项目最后一天，如是最后一天，则做关闭该项目，并释放所有员工
     '''
     for pj in project_list:
         if pj.status == 1: continue
         pj_peo = pj.peo
-        de = pj.de
+        de = pj.de #今日总花销初始值
         for p in pj_peo:
             peo = people_list[p]
             if date in peo.ld:
-                de -= peo.dw
+                de -= peo.dw #如果该员工本日休假，需减掉他的日薪
         pj.lebgt = pj.lebgt - de
-        if project_status_analysis(pj, people_list, date):
+        if if_project_final_day(pj, people_list, date):
             pj.status = 1
             pj.ed = date
             for p in pj_peo:
@@ -59,9 +59,9 @@ def daily_update(people_list, project_list, date):
                 peo.status = 0
                 peo.sch.append([pj.name, peo.pro_bd, date])
 
-def project_status_analysis(pj, people_list, date):
+def if_project_final_day(pj, people_list, date):
     '''
-    判断今天是否为项目最后一天，1表示是，0表示否
+    判断今天是否为项目最后一天，1表示是，0表示否。通过估计明天总花销与剩余总预算做对比进行判断，注意要扣除明天休假员工的日薪。
     '''
     next_date = find_next_workday(date)
     pj_peo = pj.peo
