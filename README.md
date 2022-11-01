@@ -132,3 +132,7 @@ _project_out.xlsx_ ：项目信息输出，分为4列：项目名称，项目开
 详见离线操作手册
 
 ![离线操作手册](https://github.com/maplelinfy/Jingjing/blob/master/doc/%E7%A6%BB%E7%BA%BF%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx)
+
+### TODO
+1、输入文件数据验证提示
+2、细化输出文件展示内容
