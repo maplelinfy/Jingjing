@@ -7,8 +7,8 @@ class people(object):
         self.jd = join_date #入职日期
         self.ld = leave_date #请假日期
         self.sch = [] #日程表
-        self.pro = '' #当前所在项目
-        self.pro_bd = '' #进入当前项目的日期
+        self.pj = '' #当前所在项目
+        self.pj_bd = '' #进入当前项目的日期
         self.status = 0 #状态：0表示空闲，1表示项目中
 
 class project(object):

@@ -24,7 +24,7 @@ def cal_daily_expense(de, pj_peo, people_list, date):
             de -= peo.dw
     return de
 
-def if_project_final_day(pj, people_list, date):
+def if_final_day(pj, people_list, date):
     '''
     判断今天是否为项目最后一天，1表示是，0表示否。通过估计明天总花销与剩余总预算做对比进行判断。
     '''
@@ -51,9 +51,9 @@ def assign_project(people_list, project_list, date):
                     if rd < min_remainder:
                         min_pj = pj.name
                         min_remainder = rd
-            if min_pj != -1: #等于-1表示所有项目均不需要新人
-                peo.pro = min_pj
-                peo.pro_bd = date
+            if min_pj != -1: #如果不等于-1则加入余数最小的，等于-1表示所有项目均不需要新人，可能已结束或即将在下个工作日结束
+                peo.pj = min_pj
+                peo.pj_bd = date
                 peo.status = 1
                 pj = project_list[min_pj]
                 pj.de += peo.dw
@@ -71,20 +71,20 @@ def daily_update(people_list, project_list, date):
         de = pj.de #今日总花销初始值
         de = cal_daily_expense(de, pj_peo, people_list, date)
         pj.lebgt = pj.lebgt - de
-        if if_project_final_day(pj, people_list, date):
+        if if_final_day(pj, people_list, date):
             pj.status = 1
             pj.ed = date
             for p in pj_peo:
                 peo = people_list[p]
                 peo.status = 0
-                peo.sch.append([pj.name, peo.pro_bd, date])
+                peo.sch.append([pj.name, peo.pj_bd, date])
 
 def if_close(project_list):
     '''
     每天结束后检查所有项目是否均已结束，1表示均已结束，0表示还没都结束
     '''
-    for pro in project_list:
-        if pro.status == 0:
+    for pj in project_list:
+        if pj.status == 0:
             return 0
     return 1
 

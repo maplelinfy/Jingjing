@@ -11,9 +11,9 @@ def if_workday(date):
     :return: 1：工作日；0：休息日
     """
     black_list = load_black_list()
-    white_list = load_white_list()
     if date in black_list:
         return 0
+    white_list = load_white_list()
     if date in white_list:
         return 1
     y, m, d = date_str2int(date)
@@ -31,7 +31,6 @@ def find_next_workday(date):
         today = datetime.datetime.strptime(date, '%Y-%m-%d')
         tomorrow = today + datetime.timedelta(days=1)
         tomorrow = tomorrow.strftime('%Y-%m-%d')
-        # y, m, d = date_str2int(tomorrow)
         if if_workday(tomorrow):
             return tomorrow
         else:
