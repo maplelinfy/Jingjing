@@ -49,8 +49,8 @@ def load_people_list():
     people_info = read_xlsx(people_file)
     people_list = []
     for i in range(len(people_info)):
-        leave_date = people_info[i][3].split(',')
-        peo = people(i, float(people_info[i][1]), people_info[i][2], leave_date)
+        leave_date = people_info[i][3].strip().split(',')
+        peo = people(i, float(people_info[i][1]), people_info[i][2].strip(), leave_date)
         people_list.append(peo)
         people_name.append(people_info[i][0])
     print('员工合计' + str(len(people_list)) + '人')
