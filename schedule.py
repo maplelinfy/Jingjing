@@ -14,6 +14,29 @@ def cal_begin_date(people_list):
             begin_date = peo.jd
     return begin_date
 
+def cal_daily_expense(de, pj_peo, people_list, date):
+    '''
+    计算项目在某天的日支出，需要扣除当年休假员工的日薪
+    '''
+    for p in pj_peo:
+        peo = people_list[p]
+        if date in peo.ld:
+            de -= peo.dw
+    return de
+
+def if_project_final_day(pj, people_list, date):
+    '''
+    判断今天是否为项目最后一天，1表示是，0表示否。通过估计明天总花销与剩余总预算做对比进行判断。
+    '''
+    next_date = find_next_workday(date)
+    pj_peo = pj.peo
+    de = pj.de
+    de = cal_daily_expense(de, pj_peo, people_list, next_date)
+    if de > pj.lebgt:
+        return 1
+    else:
+        return 0
+
 def assign_project(people_list, project_list, date):
     '''
     每天开始前，遍历所有员工，如果该员工当前已经入职并且闲置，则循环所有未完成的项目，并计算该员工加入后“项目剩余预算%单日总支出”，将该员工放入到该值最小的项目中
@@ -46,10 +69,7 @@ def daily_update(people_list, project_list, date):
         if pj.status == 1: continue
         pj_peo = pj.peo
         de = pj.de #今日总花销初始值
-        for p in pj_peo:
-            peo = people_list[p]
-            if date in peo.ld:
-                de -= peo.dw #如果该员工本日休假，需减掉他的日薪
+        de = cal_daily_expense(de, pj_peo, people_list, date)
         pj.lebgt = pj.lebgt - de
         if if_project_final_day(pj, people_list, date):
             pj.status = 1
@@ -58,22 +78,6 @@ def daily_update(people_list, project_list, date):
                 peo = people_list[p]
                 peo.status = 0
                 peo.sch.append([pj.name, peo.pro_bd, date])
-
-def if_project_final_day(pj, people_list, date):
-    '''
-    判断今天是否为项目最后一天，1表示是，0表示否。通过估计明天总花销与剩余总预算做对比进行判断，注意要扣除明天休假员工的日薪。
-    '''
-    next_date = find_next_workday(date)
-    pj_peo = pj.peo
-    de = pj.de
-    for p in pj_peo:
-        peo = people_list[p]
-        if next_date in peo.ld:
-            de -= peo.dw
-    if de > pj.lebgt:
-        return 1
-    else:
-        return 0
 
 def if_close(project_list):
     '''
@@ -109,6 +113,9 @@ def work(people_list, project_list):
             date = find_next_workday(date)
 
 def begin():
+    '''
+    读数据、处理、写结果。
+    '''
     people_list, project_list = load_data()
     work(people_list, project_list)
     save_results(people_list, project_list)
