@@ -16,7 +16,7 @@ def cal_begin_date(people_list):
 
 def cal_daily_expense(de, pj_peo, people_list, date):
     '''
-    计算项目在某天的日支出，需要扣除当年休假员工的日薪
+    计算项目在某天的日支出，需要扣除当天休假员工的日薪
     '''
     for p in pj_peo:
         peo = people_list[p]
@@ -90,7 +90,7 @@ def if_close(project_list):
 
 def workflow(people_list, project_list, date):
     """
-    每日工作流，分为每天开始前assign_project以及每天结束后daily_update
+    每日工作流，分为每天开始前assign_project以及每天结束后daily_update，最后判断是否所有项目均已结束
     """
     assign_project(people_list, project_list, date)
     daily_update(people_list, project_list, date)
