@@ -33,6 +33,8 @@ _common.py_ ：员工/项目类定义
 
 _constant.py_ ：参数文件，可自行配置文件输入输出名
 
+_data_check.py_ ：输入文件数据格式检测函数
+
 _requirements.txt_ ：所需python包
 
 _inputFiles_ ：输入文件放置文件夹，需按指定格式自行配置，详见输入文件说明
