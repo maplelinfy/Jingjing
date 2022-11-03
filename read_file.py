@@ -2,6 +2,7 @@
 import xlrd
 import xlwt
 
+from data_check import black_white_list_check, people_file_check, project_file_check, duplicate_people_name_check, duplicate_project_name_check
 from common import people, project
 from constant import *
 
@@ -15,7 +16,9 @@ def load_list(list_file):
     res = []
     with open(list_file) as f:
         for line in f:
-            res.append(line.strip())
+            date = line.strip()
+            black_white_list_check(date)
+            res.append(date)
     return res
 
 def load_black_list():
@@ -49,10 +52,17 @@ def load_people_list():
     people_info = read_xlsx(people_file)
     people_list = []
     for i in range(len(people_info)):
-        leave_date = people_info[i][3].strip().split(',')
-        peo = people(i, float(people_info[i][1]), people_info[i][2].strip(), leave_date)
+        daily_wage = str(people_info[i][1])
+        join_date = str(people_info[i][2]).strip()
+        leave_date = []
+        leave_date_str = str(people_info[i][3]).strip()
+        if leave_date_str != '':
+            leave_date = leave_date_str.split(',')
+        people_file_check(daily_wage, join_date, leave_date)
+        peo = people(i, float(daily_wage), join_date, leave_date)
         people_list.append(peo)
         people_name.append(people_info[i][0])
+    duplicate_people_name_check(people_name)
     print('员工合计' + str(len(people_list)) + '人')
     return people_list
 
@@ -63,9 +73,12 @@ def load_project_list():
     project_info = read_xlsx(project_file)
     project_list = []
     for i in range(len(project_info)):
-        pro = project(i, float(project_info[i][1]))
+        budget = str(project_info[i][1])
+        project_file_check(budget)
+        pro = project(i, float(budget))
         project_list.append(pro)
         project_name.append(project_info[i][0])
+    duplicate_project_name_check(project_name)
     print('项目合计' + str(len(project_list)) + '个')
     return project_list
 
