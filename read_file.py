@@ -52,7 +52,7 @@ def load_people_list():
     people_info = read_xlsx(people_file)
     people_list = []
     for i in range(len(people_info)):
-        daily_wage = str(people_info[i][1])
+        daily_wage = str(people_info[i][1]).strip()
         join_date = str(people_info[i][2]).strip()
         leave_date = []
         leave_date_str = str(people_info[i][3]).strip()
@@ -61,7 +61,8 @@ def load_people_list():
         people_file_check(daily_wage, join_date, leave_date)
         peo = people(i, float(daily_wage), join_date, leave_date)
         people_list.append(peo)
-        people_name.append(people_info[i][0])
+        name = str(people_info[i][0]).strip()
+        people_name.append(name)
     duplicate_people_name_check(people_name)
     print('员工合计' + str(len(people_list)) + '人')
     return people_list
@@ -73,11 +74,12 @@ def load_project_list():
     project_info = read_xlsx(project_file)
     project_list = []
     for i in range(len(project_info)):
-        budget = str(project_info[i][1])
+        budget = str(project_info[i][1]).strip()
         project_file_check(budget)
         pro = project(i, float(budget))
         project_list.append(pro)
-        project_name.append(project_info[i][0])
+        name = str(project_info[i][0]).strip()
+        project_name.append(name)
     duplicate_project_name_check(project_name)
     print('项目合计' + str(len(project_list)) + '个')
     return project_list
