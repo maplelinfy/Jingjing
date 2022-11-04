@@ -64,35 +64,35 @@ def black_white_list_check(date):
     黑白名单错误日期检测
     '''
     if date_check(date):
-        print('警告！黑白名单中日期格式有误，错误日期：' + date)
+        print('警告！黑白名单中“日期”格式有误，错误日期：' + date)
 
 def people_file_check(daily_wage, join_date, leave_date):
     '''
     员工列表文件数据检测
     '''
     if daily_wage == '':
-        print('警告！员工列表文件中日薪存在缺失，请补充')
+        print('警告！员工列表文件中“日薪”存在缺失，请补充')
     else:
         if money_check(daily_wage):
-            print('警告！员工列表文件中日薪格式有误，错误日薪：' + daily_wage)
+            print('警告！员工列表文件中“日薪”格式有误，错误日薪：' + daily_wage)
     if join_date == '':
-        print('警告！员工列表文件中入职日期存在缺失，请补充')
+        print('警告！员工列表文件中“入职日期”存在缺失，请补充')
     else:
         if date_check(join_date):
-            print('警告！员工列表文件中入职日期格式有误，错误日期：' + join_date)
+            print('警告！员工列表文件中“入职日期”格式有误，错误日期：' + join_date)
     for ld in leave_date:
         if date_check(ld):
-            print('警告！员工列表文件中休假日期格式有误，错误日期：' + ld)
+            print('警告！员工列表文件中“休假日期”格式有误，错误日期：' + ld)
 
 def project_file_check(budget):
     '''
     项目列表文件数据检测
     '''
     if budget == '':
-        print('警告！项目列表文件中预算存在缺失，请补充')
+        print('警告！项目列表文件中“预算”存在缺失，请补充')
     else:
         if money_check(budget):
-            print('警告！项目列表文件中预算格式有误，错误预算：' + budget)
+            print('警告！项目列表文件中“预算”格式有误，错误预算：' + budget)
 
 def duplicate_people_name_check(people_name):
     '''
@@ -100,7 +100,7 @@ def duplicate_people_name_check(people_name):
     '''
     for name in people_name:
         if name == '':
-            print('警告！员工列表文件中有姓名为空')
+            print('警告！员工列表文件中有“姓名”为空')
             break
     res, name = duplicate_name_check(people_name)
     if res:
@@ -113,7 +113,7 @@ def duplicate_project_name_check(project_name):
     '''
     for name in project_name:
         if name == '':
-            print('警告！项目列表文件中有名称为空')
+            print('警告！项目列表文件中有“项目名称”为空')
             break
     res, name = duplicate_name_check(project_name)
     if res:
