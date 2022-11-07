@@ -1,8 +1,10 @@
 
 import datetime
 
-from read_file import load_black_list, load_white_list
+from read_file import load_black_white_list
 
+
+black_list, white_list = load_black_white_list()
 
 def if_workday(date):
     """
@@ -10,10 +12,8 @@ def if_workday(date):
     :param date: 日期
     :return: 1：工作日；0：休息日
     """
-    black_list = load_black_list()
     if date in black_list:
         return 0
-    white_list = load_white_list()
     if date in white_list:
         return 1
     y, m, d = date_str2int(date)

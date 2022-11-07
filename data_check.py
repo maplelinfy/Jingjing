@@ -63,7 +63,7 @@ def black_white_list_check(date):
     '''
     黑白名单错误日期检测
     '''
-    if date_check(date):
+    if date_check(date) and date != '':
         print('警告！黑白名单中“日期”格式有误，错误日期：' + date)
 
 def people_file_check(daily_wage, join_date, leave_date):

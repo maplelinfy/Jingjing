@@ -18,20 +18,15 @@ def load_list(list_file):
         for line in f:
             date = line.strip()
             black_white_list_check(date)
-            res.append(date)
+            if date != '':
+                res.append(date)
     return res
 
-def load_black_list():
+def load_black_white_list():
     '''
-    读取黑名单列表
+    读取黑白名单列表
     '''
-    return load_list(black_list_file)
-
-def load_white_list():
-    '''
-    读取白名单列表
-    '''
-    return load_list(white_list_file)
+    return load_list(black_list_file), load_list(white_list_file)
 
 def read_xlsx(xlsx_file):
     '''
