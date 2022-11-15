@@ -91,7 +91,7 @@
 
 * _people_out.xlsx_ ：员工排期输出：分为4列：{姓名，所在项目名称，进入项目时间，退出项目时间}，详见示例文件 _./outputFiles/people_out_eg.xlsx_
 
-* _project_out.xlsx_ ：项目信息输出，分为4列：项目名称，项目开始时间，项目结束时间，项目剩余预算，详见示例文件 _./outputFiles/project_out_eg.xlsx_
+* _project_out.xlsx_ ：项目信息输出，分为4列：{项目名称，项目开始时间，项目结束时间，项目剩余预算}，详见示例文件 _./outputFiles/project_out_eg.xlsx_
 
 说明：
 
